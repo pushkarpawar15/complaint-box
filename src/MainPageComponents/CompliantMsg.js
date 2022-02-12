@@ -8,7 +8,7 @@ export default function CompliantMsg(props) {
 const Complaints = (data) => {
 	return data.map((item)=>{
 		if(item.isVisible)return <div class="p-6">
-		<div class="rounded-2xl overflow-hidden shadow-lg w-full p-6 bg-blue-400 my-transition">
+		<div class="rounded-2xl overflow-hidden shadow-lg w-full p-6 bg-slate-300 my-transition">
 		<div class="px-6 py-4">
 			<div class="font-bold text-2xl mb-2">
 				{item.subject}

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function ComplaintForm() {
   return (
-	<div class='my-transition'>
+	<div class='my-transition bg-white p-10 rounded-2xl'>
 	
 	<h1>Complaint Form</h1> <br/>
 	

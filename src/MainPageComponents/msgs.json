@@ -2,7 +2,7 @@
 	{
 		"id":1,
 		"subject":"Need food improvements",
-		"tags":["mess","hostel"],
+		"tags":["hostel","mess"],
 		"data":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil."
 		,"isVisible":false
 	},
@@ -17,7 +17,7 @@
 	{
 		"id":3,
 		"subject":"Need food improvements",
-		"tags":["mess","hostel"],
+		"tags":["mess"],
 		"data":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. "
 		,"isVisible":false
 

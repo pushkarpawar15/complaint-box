@@ -11,7 +11,7 @@ import datas from './MainPageComponents/msgs.json'
 function MainPage() {
   const [count, setCount] = useState(0);
   const [data,setData] = useState(datas);
-  const form = <div><div class="h-1/6"></div><div class="flex justify-center align-middle "><ComplaintForm/></div></div>
+  const form = <div><div class="h-1/6 "></div><div class="flex justify-center align-middle"><ComplaintForm/></div></div>
   const msgs = <CompliantMsg data={data} setData={(list)=>setData(list)}/>
   const rnav = <div class="w-2/6 pl-4"><RightSideNav data={data} setData={(list)=>setData(list)}/></div>
   const renderAppropriateWindow = (val) => {
@@ -28,11 +28,11 @@ function MainPage() {
   }
 
   return (
-    <div class="flex text-2xl min-h-screen">
+    <div class="flex text-2xl min-h-screen bg-slate-500">
       <div class="w-1/6 pr-4">
         <SideNav handleClick={(val)=>{handleNavClick(val)}}/>
       </div>
-      <div class="flex flex-col p-8 w-3/6 ">
+      <div class="flex flex-col w-3/6 ">
           {renderAppropriateWindow(count)}
       </div>
       {(count === 1) ? rnav:null}

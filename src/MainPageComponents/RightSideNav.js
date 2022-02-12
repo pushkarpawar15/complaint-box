@@ -1,10 +1,19 @@
 import React,{useState} from 'react'
 export default function RightSideNav(props) {
 
+	const [filterList,setFilterList] = useState([{name:"Acads",value:false,pname:"academics"},{name:"Hostel",value:false,pname:"hostel"},{name:"Mess",value:false,pname:"mess"}]);
+
+
+const updateFilterListState = (nm) => 
+{
+	const newFliterList = filterList.filter(item => item.name !== nm);
+	const tempObj = filterList.find(item => item.name === nm);
+	setFilterList([...newFliterList,{...tempObj,value:!tempObj.value}]);
+}
 const filters = (listOfFilters) => {
 	return listOfFilters.map( (name) => {
 		return <div class="form-check text-xl p-1">
-		<input class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" onClick={(e)=>console.item.log(e)} id="flexCheckChecked" />
+		<input class="form-check-input appearance-none h-5 w-5 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" onClick={()=>updateFilterListState(name)} />
 		<label class="form-check-label inline-block text-green-500" for="flexCheckChecked">
 			{name}
 		</label>
@@ -29,11 +38,17 @@ const handleSubjectClick = (e) =>
 const Subjects = (data) => 
 {
 	const getbg = (item) => {return (item.isVisible) ? "p-4 bg-gray-900 w-full" : "p-4 w-full"}
+	let flag=false;
 	return data.map( (item) => 
 	{
-		return <button class={getbg(item)} onClick={()=>{handleSubjectClick({item})}}>
+		filterList.map((it)=>{item.tags.map((it1)=>{if(it1===it.pname && it.value){flag=true}})})
+		console.log(filterList,item.tags);
+		if(flag){
+			flag=false;
+			return <button class={getbg(item)} onClick={()=>{handleSubjectClick({item})}}>
 			{item.subject}
-		</button>
+			</button>
+		}
 	})
 }
 
