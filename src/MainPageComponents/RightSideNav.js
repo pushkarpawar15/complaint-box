@@ -28,7 +28,7 @@ const handleSubjectClick = (e) =>
 
 const Subjects = (data) => 
 {
-	const getbg = (item) => {return (item.isVisible) ? "p-4 bg-gray-900 w-full" : "p-4"}
+	const getbg = (item) => {return (item.isVisible) ? "p-4 bg-gray-900 w-full" : "p-4 w-full"}
 	return data.map( (item) => 
 	{
 		return <button class={getbg(item)} onClick={()=>{handleSubjectClick({item})}}>
@@ -44,7 +44,8 @@ const Subjects = (data) =>
 			Filters
 			{filters(["Acads","Hostel","Mess"])}
 		</i>
-		<i class='h-fit flex-col mx-auto shadow-lg bg-gray-800 text-green-500 w-4/5 rounded-3xl mt-8 mb-8 text-xl'>
+		<i class='h-fit flex-col mx-auto shadow-lg bg-gray-800 text-green-500 w-4/5 rounded-3xl mt-8 mb-8 text-xl text-center'>
+			<i class="p-8 w-full text-3xl text-white">Subjects</i>
 			{Subjects(props.data)}
 		</i>
     </div>
