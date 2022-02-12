@@ -1,14 +1,13 @@
 import React from 'react'
-import data from './msgs.json'
-export default function CompliantMsg() {
+export default function CompliantMsg(props) {
   return (
-	  <div>{Complaints(data)}</div>
+	  <div>{Complaints(props.data)}</div>
   )
 }
 
 const Complaints = (data) => {
 	return data.map((item)=>{
-		return <div class="p-6">
+		if(item.isVisible)return <div class="p-6">
 		<div class="rounded-2xl overflow-hidden shadow-lg w-full p-6 bg-blue-400 my-transition">
 		<div class="px-6 py-4">
 			<div class="font-bold text-2xl mb-2">
