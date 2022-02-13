@@ -1,5 +1,43 @@
 import React, {useState} from 'react'
 let ids = 4;
+
+const handleSubmit = () =>
+	{
+		//e.preventDefault();
+		//ids++;
+		//setComplaint({id:"",subject:"",data:"",tags:[],isVisible:false,status:false});
+		//console.log(e);
+
+		const form = document.getElementById('reg-form')
+		form.addEventListener('submit', registerUser)
+
+	async function registerUser(event) {
+		event.preventDefault()
+		const subject = document.getElementById('grid-first-name').value
+		const complaint = document.getElementById('exampleFormControlTextarea1').value
+		console.log(subject);
+		console.log(complaint);
+
+		const result = await fetch('/api/registerC', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				subject,
+				complaint
+			})
+		}).then((res) => res.json())
+
+		if (result.status === 'ok') {
+			// everythign went fine
+			alert('Complaint Registered Successfully')
+		} else {
+			alert(result.error)
+		}
+	}
+
+}
 export default function ComplaintForm() {
 	const [complaint,setComplaint] = useState({id:"",subject:"",data:"",tags:[],isVisible:false,status:false});
 
@@ -17,21 +55,12 @@ export default function ComplaintForm() {
 		if(e.target.checked){setComplaint({...complaint,tags:[...complaint.tags,e.target.value]});}
 		else {setComplaint({...complaint,tags:complaint.tags.filter(item => item !== e.target.value)});}
 	}
-
-	const handleSubmit = (e) =>
-	{
-		e.preventDefault();
-		ids++;
-		setComplaint({id:"",subject:"",data:"",tags:[],isVisible:false,status:false});
-		console.log(e);
-	}
-
   return (
 	<div class='my-transition bg-white p-10 rounded-2xl'>
 	
 	<h1>Complaint Form</h1> <br/>
 	
-	<form class="w-full max-w-lg h-full text-xl">
+	<form class="w-full max-w-lg h-full text-xl" id='reg-form' action='/api/registerC'>
 		<div class="flex flex-wrap -mx-3 mb-6">
 			<div class="w-full md:w-full px-3 mb-6 md:mb-0">
 				<label class="block uppercase tracking-wide text-gray-700 font-bold mb-2" for="grid-first-name">
@@ -89,7 +118,7 @@ export default function ComplaintForm() {
 		</div>
 		<br/>
 		<div class="flex space-x-2 justify-center">
-  			<button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onClick={(e)=>{handleSubmit(e)}}>Register Compliant</button>
+  			<button type="submit" id='submit' class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" onClick={()=>{handleSubmit()}}>Register Compliant</button>
 		</div>
 	</form>
 
