@@ -1,5 +1,5 @@
-import Layout from './LoginPage/Login'
-import MainPage from './MainPage'
+import Login from './LoginPage/Login'
+import UserMainPage from './UserMainPage'
 
 import React, { useState } from 'react';
 
@@ -9,7 +9,7 @@ export default function App(){
     return(
         <div>
            {
-              (count==0)?<Layout/>: <MainPage/> 
+              (count==0)?<Login/>: <UserMainPage/> 
            }
         </div>
     )

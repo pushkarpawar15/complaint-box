@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import SideNav from './MainPageComponents/SideNav';
-import CompliantMsg from './MainPageComponents/CompliantMsg';
-import RightSideNav from './MainPageComponents/RightSideNav';
-import ComplaintForm from './MainPageComponents/ComplaintForm';
-import datas from './MainPageComponents/msgs.json';
+import SideNav from './UserMainPageComponents/SideNav';
+import CompliantMsg from './UserMainPageComponents/CompliantMsg';
+import RightSideNav from './UserMainPageComponents/RightSideNav';
+import ComplaintForm from './UserMainPageComponents/ComplaintForm';
+import datas from './UserMainPageComponents/msgs.json';
 import Login from './LoginPage/Login'
 
-function MainPage() {
+export default function UserMainPage() {
 	const [count, setCount] = useState(0);
 	const [data, setData] = useState(datas);
 	const [isLoggedIn, setIsLoggedIn] = useState(1);
@@ -63,4 +63,3 @@ function MainPage() {
 		isLoggedIn==1? mainpage(): <Login/>
 	);
 }
-export default MainPage;

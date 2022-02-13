@@ -6,7 +6,7 @@ import SignIn from './SignInForm';
 import SignUp from './SignUpForm';
 import './styles.css';
 
-export default function layout() {
+export default function Login() {
 	return (
 		<div className='App'>
 			<div className='appAside' />
