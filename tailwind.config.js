@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/*.js','./src/MainPageComponents/*.js'],
+  content: ['./src/*.js','./src/UserMainPageComponents/*.js','./src/AdminMainPageComponents/*.js'],
   theme: {
     extend: {
       primary: '#202225',
