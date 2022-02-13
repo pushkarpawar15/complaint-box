@@ -1,24 +1,15 @@
 import { useState } from 'react';
-import SideNav from './UserMainPageComponents/SideNav';
-import CompliantMsg from './UserMainPageComponents/CompliantMsg';
-import RightSideNav from './UserMainPageComponents/RightSideNav';
-import ComplaintForm from './UserMainPageComponents/ComplaintForm';
-import datas from './UserMainPageComponents/msgs.json';
+import SideNav from './AdminMainPageComponents/SideNav';
+import CompliantMsg from './AdminMainPageComponents/CompliantMsg';
+import RightSideNav from './AdminMainPageComponents/RightSideNav';
+import datas from './AdminMainPageComponents/msgs.json';
 import Login from './LoginPage/Login'
 
 export default function UserMainPage() {
 	const [count, setCount] = useState(0);
 	const [data, setData] = useState(datas);
 	const [isLoggedIn, setIsLoggedIn] = useState(1);
-
-	const form = (
-		<div>
-			<div class='h-1/6 '></div>
-			<div class='flex justify-center align-middle'>
-				<ComplaintForm />
-			</div>
-		</div>
-	);
+	
 	const msgs = <CompliantMsg data={data} setData={(list) => setData(list)} />;
 	const rnav = (
 		<div class='w-2/6 pl-4'>
@@ -27,12 +18,8 @@ export default function UserMainPage() {
 	);
 	const renderAppropriateWindow = (val) => {
 		switch (val) {
-			case 0:
-				return form;
-			case 1:
-				return msgs;
 			default:
-				return form;
+				return msgs;
 		}
 	};
 
