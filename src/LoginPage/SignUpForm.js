@@ -7,7 +7,27 @@ export default function SignUpForm() {
 		<div className='formCenter'>
 			<form className='formFields'>
 				<div className='formField'>
-					<label className='formFieldLabel'>Full Name</label>
+					<label className='formFieldLabel'>First Name</label>
+					<input
+						type='text'
+						id='name'
+						className='formFieldInput'
+						placeholder='Enter your full name'
+						name='name'
+					/>
+				</div>
+				<div className='formField'>	
+					<label className='formFieldLabel'>Last Name</label>
+					<input
+						type='text'
+						id='name'
+						className='formFieldInput'
+						placeholder='Enter your full name'
+						name='name'
+					/>
+				</div>
+				<div className='formField'>	
+					<label className='formFieldLabel'>Username</label>
 					<input
 						type='text'
 						id='name'
