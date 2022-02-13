@@ -17,39 +17,39 @@ const app = express()
 app.set('/src/LoginPage', path.join(__dirname, '/src/LoginPage'))
 app.use(bodyParser.json())
 
-app.post('/api/change-password', async (req, res) => {
-	const { token, newpassword: plainTextPassword } = req.body
+// app.post('/api/change-password', async (req, res) => {
+// 	const { token, newpassword: plainTextPassword } = req.body
 
-	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
-		return res.json({ status: 'error', error: 'Invalid password' })
-	}
+// 	if (!plainTextPassword || typeof plainTextPassword !== 'string') {
+// 		return res.json({ status: 'error', error: 'Invalid password' })
+// 	}
 
-	if (plainTextPassword.length < 6) {
-		return res.json({
-			status: 'error',
-			error: 'Password too small. Should be atleast 7 characters'
-		})
-	}
+// 	if (plainTextPassword.length < 6) {
+// 		return res.json({
+// 			status: 'error',
+// 			error: 'Password too small. Should be atleast 7 characters'
+// 		})
+// 	}
 
-	try {
-		const user = jwt.verify(token, JWT_SECRET)
+// 	try {
+// 		const user = jwt.verify(token, JWT_SECRET)
 
-		const _id = user.id
+// 		const _id = user.id
 
-		const password = await bcrypt.hash(plainTextPassword, 10)
+// 		const password = await bcrypt.hash(plainTextPassword, 10)
 
-		await User.updateOne(
-			{ _id },
-			{
-				$set: { password }
-			}
-		)
-		res.json({ status: 'ok' })
-	} catch (error) {
-		console.log(error)
-		res.json({ status: 'error', error: ';))' })
-	}
-})
+// 		await User.updateOne(
+// 			{ _id },
+// 			{
+// 				$set: { password }
+// 			}
+// 		)
+// 		res.json({ status: 'ok' })
+// 	} catch (error) {
+// 		console.log(error)
+// 		res.json({ status: 'error', error: ';))' })
+// 	}
+// })
 
 app.post('/api/login', async (req, res) => {
 	const { username, password } = req.body
