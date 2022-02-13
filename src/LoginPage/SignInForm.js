@@ -2,18 +2,49 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
+const authenticate = () => {
+	const form = document.getElementById('login')
+			form.addEventListener('submit', login)
+
+			async function login(event) {
+				event.preventDefault()
+				const username = document.getElementById('username').value
+				const password = document.getElementById('password').value
+
+				const result = await fetch('/api/login', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						username,
+						password
+					})
+				}).then((res) => res.json())
+
+				if (result.status === 'ok') {
+					// everythign went fine
+					console.log('Got the token: ', result.data)
+					localStorage.setItem('token', result.data)
+					alert('LoggedIn Successfully')
+				} else {
+					alert(result.error)
+				}
+			}
+}
+
 const UserLogin=()=>{
 	return( 
 	<div className='formCenter'>
-	<form className='formFields'>
+	<form action='/api/login' className='formFields' id='login'>
 		<div className='formField'>
-			<label className='formFieldLabel'>E-Mail Address</label>
+			<label className='formFieldLabel'>User Name</label>
 			<input
-				type='email'
-				id='email'
+				type='text'
+				id='username'
 				className='formFieldInput'
-				placeholder='Enter your email'
-				name='email'
+				placeholder='Enter your user name'
+				name='username'
 			/>
 		</div>
 
@@ -29,7 +60,7 @@ const UserLogin=()=>{
 		</div>
 
 		<div className='formField'>
-			<button className='formFieldButton'>Sign In</button>
+			<button className='formFieldButton' id='submit' type='submit' onClick={()=>authenticate()}>Sign In</button>
 			<Link to='/sign-up' className='formFieldLink'>
 				Create an account
 			</Link>

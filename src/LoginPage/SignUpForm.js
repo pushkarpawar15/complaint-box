@@ -2,38 +2,73 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
+const authenticate = () => {
+	const form = document.getElementById('reg-form')
+	form.addEventListener('submit', registerUser)
+
+	async function registerUser(event) {
+		event.preventDefault()
+		const firstname = document.getElementById('first_name').value
+		const lastname = document.getElementById('last_name').value
+		const username = document.getElementById('user_name').value
+		const Email = document.getElementById('email').value
+		const password = document.getElementById('password').value
+
+		const result = await fetch('/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				firstname,
+				lastname,
+				username,
+				password,
+				Email
+			})
+		}).then((res) => res.json())
+
+		if (result.status === 'ok') {
+			// everythign went fine
+			alert('User Registered Successfully')
+		} else {
+			alert(result.error)
+		}
+	}
+}
+
 export default function SignUpForm() {
 	return (
 		<div className='formCenter'>
-			<form className='formFields'>
+			<form action='/api/register' method="post" className='formFields' id='reg-form'>
 				<div className='formField'>
 					<label className='formFieldLabel'>First Name</label>
 					<input
 						type='text'
-						id='name'
+						id='first_name'
 						className='formFieldInput'
-						placeholder='Enter your full name'
-						name='name'
+						placeholder='Enter your first name'
+						name='first_name'
 					/>
 				</div>
-				<div className='formField'>	
+				<div className='formField'>
 					<label className='formFieldLabel'>Last Name</label>
 					<input
 						type='text'
-						id='name'
+						id='last_name'
 						className='formFieldInput'
-						placeholder='Enter your full name'
-						name='name'
+						placeholder='Enter your last name'
+						name='last_name'
 					/>
 				</div>
-				<div className='formField'>	
+				<div className='formField'>
 					<label className='formFieldLabel'>Username</label>
 					<input
 						type='text'
-						id='name'
+						id='user_name'
 						className='formFieldInput'
-						placeholder='Enter your full name'
-						name='name'
+						placeholder='Enter your user name'
+						name='user_name'
 					/>
 				</div>
 				<div className='formField'>
@@ -72,7 +107,7 @@ export default function SignUpForm() {
 				</div>
 
 				<div className='formField'>
-					<button className='formFieldButton'>Sign Up</button>{' '}
+					<button className='formFieldButton' type='submit' id='submit' onClick={()=>authenticate()}>Sign Up</button>{' '}
 					<Link to='/' className='formFieldLink'>
 						I'm already member
 					</Link>
