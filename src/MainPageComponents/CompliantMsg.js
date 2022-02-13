@@ -18,6 +18,9 @@ const Complaints = (data) => {
 			</p>
 		</div>
 		<div class="px-6 pt-4 pb-2">
+			<span class='inline-block bg-gray-200 rounded-full px-3 py-1 text-base font-semibold text-gray-700 mr-2 mb-2'>
+				#{item.status}
+			</span>
 			{item.tags.map( (tag) => {
 				return <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-base font-semibold text-gray-700 mr-2 mb-2">#{tag}</span>
 			})}

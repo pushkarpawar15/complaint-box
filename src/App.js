@@ -1,4 +1,4 @@
-import Layout from './LoginPage/layout'
+import Layout from './LoginPage/Login'
 import MainPage from './MainPage'
 
 import React, { useState } from 'react';
