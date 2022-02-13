@@ -62,9 +62,21 @@ export default function Login() {
 						className='formTitleLink'>
 						Sign Up
 					</NavLink>
+					<br></br>
+					<div className='formTitleLink'></div>
+					<p>For Admin Login:   
+						<NavLink to= '/admin-login' 
+							style={({ isActive }) => {
+							return {
+								color: isActive ? '#B8405E' : '#707c8b',
+								borderBottom: isActive ? '1px solid #111827' : null,
+							};
+						}}
+						className='formTitleLink'>Click Here</NavLink></p>
 				</div>
 				<Routes>
-					<Route exact path='/' element={<SignIn />} />
+					<Route exact path='/' element={<SignIn isAdmin={false}/>} />
+					<Route exact path='/admin-login' element={<SignIn isAdmin={true} />} />
 					<Route path='/sign-up' element={<SignUp />} />
 				</Routes>
 			</div>

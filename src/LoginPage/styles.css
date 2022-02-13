@@ -3,6 +3,11 @@
 	border-radius: 40px;
 	background-color: #94badd;
 }
+.formCenterAdmin{
+	padding: 50px;
+	border-radius: 40px;
+	background-color: #d96e6e;
+}
 
 .formField {
 	margin-bottom: 40px;
@@ -19,7 +24,7 @@
 	width: 85%;
 	background-color: transparent;
 	border: none;
-	color: #22c55e;
+	color: #ffffff;
 	outline: none;
 	border-bottom: 1px solid #445366;
 	font-size: 1em;
@@ -125,9 +130,11 @@
 	text-decoration: none;
 	display: inline-block;
 	font-size: 1.7em;
-	margin: 0 10px;
+	margin: 10px;
 	padding-bottom: 5px;
+	padding-left: 10px;
 }
+
 
 .formTitleLink:first-child {
 	margin-left: 0;
