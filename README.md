@@ -4,10 +4,10 @@
 Link to the Project Report: https://docs.google.com/document/d/1HDNpGKUTVpfSyLamEInAwF8HQ7we_7A0w-pMqsbxXGg/edit?usp=sharing
   
 # Instructions to Run the Program:
-  npm start
-  node server.js
-  node server1.js 
-  node server2.js
+  1) npm start
+  2) node server.js
+  3) node server1.js 
+  4) node server2.js
   
 # Short Description of Project:
 The official ComplaintBox of every school and company in India, so that the complaints of people can be heard and administration can look into it and improve it.
